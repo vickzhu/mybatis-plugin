@@ -35,8 +35,8 @@ public class PaginationPlugin extends PluginAdapter {
 	
 	public boolean sqlMapSelectByExampleWithBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
-		XmlElement isNotNullElement = new XmlElement("if"); //$NON-NLS-1$
-        isNotNullElement.addAttribute(new Attribute("test", "offset > -1 and rows > -1")); //$NON-NLS-1$ //$NON-NLS-2$
+		XmlElement isNotNullElement = new XmlElement("if");
+        isNotNullElement.addAttribute(new Attribute("test", "offset > -1 and rows > -1")); 
         isNotNullElement.addElement(new TextElement("limit ${offset},${rows}"));
         element.addElement(isNotNullElement);
         return true;
@@ -44,8 +44,8 @@ public class PaginationPlugin extends PluginAdapter {
 	
 	public boolean sqlMapSelectByExampleWithoutBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
-		XmlElement isNotNullElement = new XmlElement("if"); //$NON-NLS-1$
-        isNotNullElement.addAttribute(new Attribute("test", "offset > -1 and rows > -1")); //$NON-NLS-1$ //$NON-NLS-2$
+		XmlElement isNotNullElement = new XmlElement("if");
+        isNotNullElement.addAttribute(new Attribute("test", "offset > -1 and rows > -1")); 
         isNotNullElement.addElement(new TextElement("limit ${offset},${rows}"));
         element.addElement(isNotNullElement);
         return true;
