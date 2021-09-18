@@ -28,8 +28,8 @@ public class PaginationPlugin extends PluginAdapter {
 
 	public boolean modelExampleClassGenerated(TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
-		addFeild(topLevelClass, introspectedTable, OFFSET);
-		addFeild(topLevelClass, introspectedTable, ROWS);
+		addFeild(topLevelClass, introspectedTable, OFFSET, "-1");
+		addFeild(topLevelClass, introspectedTable, ROWS, "10");
         return true;
     }
 	
@@ -51,13 +51,13 @@ public class PaginationPlugin extends PluginAdapter {
         return true;
     }
 	
-	private void addFeild(TopLevelClass topLevelClass,IntrospectedTable introspectedTable,String name){
+	private void addFeild(TopLevelClass topLevelClass,IntrospectedTable introspectedTable,String name, String defaultValue){
 		CommentGenerator commentGenerator = context.getCommentGenerator();
 		Field field = new Field();
 		field.setVisibility(JavaVisibility.PROTECTED);
 		field.setType(FullyQualifiedJavaType.getIntInstance());
 		field.setName(name);
-		field.setInitializationString("-1");
+		field.setInitializationString(defaultValue);
 		commentGenerator.addFieldComment(field, introspectedTable);
 		topLevelClass.addField(field);
 		char c = name.charAt(0);
